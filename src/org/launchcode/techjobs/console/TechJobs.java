@@ -61,7 +61,7 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+                    printJobs(JobData.findByValue( searchTerm ));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -111,28 +111,17 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-//        Complete this method. It should print out something like this:
-//
-//*****
-//position type: Data Scientist / Business Intelligence
-//name: Sr. IT Analyst (Data/BI)
-//employer: Bull Moose Industries
-//location: Saint Louis
-//core competency: Statistical Analysis
-//*****
-//If there are no results, it should print an appropriate message.
-//
-    if (!someJobs.isEmpty()) {
-        System.out.println( "*****" );
-        for (HashMap<String, String> jobType : someJobs) {
-            for (String key : jobType.keySet()) {
-                System.out.println( key + ": " + jobType.get( key ) );
-            }
+        if (!someJobs.isEmpty()) {
             System.out.println( "*****" );
-        }
-        System.out.println(someJobs.size());
-    } else {
-                System.out.println( "Array List is empty." );
+            for (HashMap<String, String> jobType : someJobs) {
+                for (String key : jobType.keySet()) {
+                    System.out.println( key + ": " + jobType.get( key ) );
+                }
+                System.out.println( "*****" );
+            }
+            System.out.println(someJobs.size());
+        } else {
+            System.out.println( "Array List is empty." );
             }
 
         //System.out.println("printJobs is not implemented yet");
